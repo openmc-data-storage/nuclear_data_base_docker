@@ -22,4 +22,3 @@ jobs:
         name: shimwell/nuclear_data_base_docker
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: nuclear_data_base_docker/Dockerfile
