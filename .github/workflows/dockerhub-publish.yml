@@ -1,0 +1,33 @@
+# This yml file will trigger a Github Action on pushes to the main branch.
+# This Action will build and upload a Docker image to Dockerhub
+# https://github.com/marketplace/actions/publish-docker
+
+name: dockerhub-publish
+
+on:
+  push:
+    branches: 
+    - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+       name : [
+          pymoab-py2-18.04,
+          pymoab-py3-18.04,
+          pymoab-visit-py2-18.04,
+        ]
+        
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Publish ${{ matrix.name }} to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: svalinn/${{ matrix.name }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: ${{ matrix.name }}/Dockerfile
