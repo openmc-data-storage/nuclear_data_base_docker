@@ -17,4 +17,4 @@ odj.cross_section_h5_files_to_json_files(
     index_filename='TENDL-2019_index.json'
 )
 
-os.system('rm TENDL-2019')
+os.system('rm -rf TENDL-2019')
