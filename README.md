@@ -1,5 +1,5 @@
-# nuclear_data_base_docker
-A Dockerfile for containing separate JSON files split into individual reactions for a range of libraries
+
+A Dockerfile for containing separate JSON files for each individual reactions for a range of libraries
 
 build with:
 
