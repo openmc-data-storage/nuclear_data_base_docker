@@ -1,4 +1,6 @@
 
+import pandas as pd
+import json
 import os
 import pathlib
 
@@ -18,5 +20,16 @@ odj.cross_section_h5_files_to_json_files(
     library='TENDL-2019',
     index_filename='TENDL-2019_index.json'
 )
+
+
+f = open('TENDL-2019_json/TENDL-2019_index.json')
+data = json.load(f)
+df = pd.json_normalize(data)
+
+for col in df.columns:
+    df[col] = df[col].astype(str)
+
+h5File = "all_indexes.h5"
+df.to_hdf(h5File, "/data/d1")
 
 os.system('rm -rf TENDL-2019')
