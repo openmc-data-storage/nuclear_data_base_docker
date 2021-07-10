@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# nuclear data
+TENDL-2019_json/
+all_indexes.h5
