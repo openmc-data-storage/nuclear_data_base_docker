@@ -21,9 +21,28 @@ odj.cross_section_h5_files_to_json_files(
     index_filename='TENDL-2019_index.json'
 )
 
+with open('TENDL-2019_json/TENDL-2019_index.json') as f:
+    data_tendl = json.load(f)
 
-f = open('TENDL-2019_json/TENDL-2019_index.json')
-data = json.load(f)
+
+odd.just_in_time_library_generator(
+    libraries='ENDFB-7.1-NNDC',
+    elements='all',
+    destination='ENDFB-7.1-NNDC'
+)
+
+odj.cross_section_h5_files_to_json_files(
+    filenames = list(pathlib.Path('ENDFB-7.1-NNDC').glob('*.h5')),
+    output_dir = 'ENDFB-7.1-NNDC_json',
+    library='ENDFB-7.1-NNDC',
+    index_filename='ENDFB-7.1-NNDC_index.json'
+)
+
+with open('ENDFB-7.1-NNDC_json/ENDFB-7.1-NNDC_index.json') as f:
+    data_endf = json.load(f)
+
+data = data_endf + data_tendl
+
 df = pd.json_normalize(data)
 
 for col in df.columns:
