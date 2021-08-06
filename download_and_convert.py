@@ -18,7 +18,8 @@ odj.cross_section_h5_files_to_json_files(
     filenames = list(pathlib.Path('TENDL-2019').glob('*.h5')),
     output_dir = 'TENDL-2019_json',
     library='TENDL-2019',
-    index_filename='TENDL-2019_index.json'
+    index_filename='TENDL-2019_index.json',
+    indent=None
 )
 
 
