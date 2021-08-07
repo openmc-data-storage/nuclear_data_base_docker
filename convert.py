@@ -1,18 +1,12 @@
 
+
 import pandas as pd
 import json
 import os
 import pathlib
 
-import openmc_data_downloader as odd
 import openmc_data_to_json as odj
 
-
-odd.just_in_time_library_generator(
-    libraries='TENDL-2019',
-    elements='all',
-    destination='TENDL-2019'
-)
 
 odj.cross_section_h5_files_to_json_files(
     filenames = list(pathlib.Path('TENDL-2019').glob('*.h5')),
