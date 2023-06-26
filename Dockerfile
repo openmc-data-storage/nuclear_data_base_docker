@@ -12,9 +12,9 @@ FROM continuumio/miniconda3:4.9.2 as h5_base
 
 RUN conda install -c conda-forge openmc
 
-RUN pip install openmc_data_downloader>=0.5.4
-
 RUN pip install openmc_data_to_json
+
+RUN pip install openmc_data_downloader
 
 # needed for hdf5 writting of the index file
 RUN pip install tables
